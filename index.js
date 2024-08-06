@@ -125,20 +125,3 @@ client.on('interactionCreate', async interaction => {
 });
 
 client.login(TOKEN);
-
-// Express server setup for uptime monitoring
-app.get("/", (req, res) => {
-  res.send("Bot is running!");
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
-// Keep-alive code
-const URL = process.env.PROJECT_URL;
-let count = 0;
-setInterval(() => {
-  axios.get(URL).then(() => console.log(`[${++count}] Pinged ${URL}`));
-}, 300000); // 300000 ms = 5 minutes
